@@ -6,7 +6,7 @@ import { MetricCard } from './components/MetricCard'
 import { useMetrics } from './hooks/useMetrics'
 
 function App() {
-  const { metrics, loading } = useMetrics();
+  const { metrics } = useMetrics();
 
   return (
     <main style={{ padding: "2rem" }}>
