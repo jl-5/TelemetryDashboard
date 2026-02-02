@@ -17,6 +17,12 @@ export function fetchMetrics(): Promise<Metric[]> {
                     value: 74,
                     unit: "%",
                 },
+                                {
+                    id: "radiation",
+                    label: "Radiation",
+                    value: 82,
+                    unit: "raditions",
+                },
             ]);
         }, 500);
     });
