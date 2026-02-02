@@ -3,27 +3,10 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { MetricCard } from './components/MetricCard'
-import type { Metric } from './types/metric'
-import { fetchMetrics } from './api/mockMetrics'
+import { useMetrics } from './hooks/useMetrics'
 
 function App() {
-  const [metrics, setMetrics] = useState<Metric[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    fetchMetrics().then((data) => {
-      setMetrics(data);
-      setLoading(false);
-    })
-    // we don't represent bad data yet but this is where it would be caught
-    .catch();
-    // initialize with empty dependency array so fetchMetrics runs once after rendering
-  }, []);
-
-  // display Loading screen if we're still loading
-  if (loading) {
-    return <p>Loading metrics...</p>
-  }
+  const { metrics, loading } = useMetrics();
 
   return (
     <main style={{ padding: "2rem" }}>
