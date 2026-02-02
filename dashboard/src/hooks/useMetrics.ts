@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { fetchMetrics } from "../api/mockMetrics";
+import { fetchMetrics } from "../api/mockConstantMetrics";
 import type { Metric} from "../types/metric";
 
 // this is a custom hook for using metrics
