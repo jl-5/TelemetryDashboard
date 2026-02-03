@@ -37,6 +37,9 @@ export function MetricChart({ series }: Props) {
 
             xAxis: {
                 type: "time",
+                axisLabel: {
+                    hideOverlap: true
+                }
             },
 
             yAxis: {
