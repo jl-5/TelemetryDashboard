@@ -18,7 +18,7 @@ This dashboard simulates a monitoring interface similar to tools like Grafana or
 
 ## Architecture
 
-Browser -> Nginx -> Static React Build -> Mock Metrics API (frontend simulation)
+`Browser -> Nginx -> Static React Build -> Mock Metrics API (frontend simulation)`
 
 Future backend integration can plug into the `/api` proxy path via Nginx.
 
