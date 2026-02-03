@@ -7,28 +7,30 @@ import { useMetrics } from './hooks/useMetrics'
 import { MetricChart } from './components/MetricChart'
 
 function App() {
-  const { metrics } = useMetrics();
+  const { series } = useMetrics();
 
   return (
     <main style={{ padding: "2rem" }}>
       <h1>Metrics Dashboard</h1>
       <p>Status: Running</p>
 
-      { /* example MetricCard usages */}
-      { /*
-      <MetricCard label='CPU Usage' value={48} unit='%' />
-      <MetricCard label='Depth' value={1200} unit='ft' />
-      */ }
+      { /* render the charts and cards */}
+      {Object.values(series).map((s) => {
+        const latest = s.points[s.points.length - 1];
 
-      { /* for every metric we receive, map it onto a MetricCard */}
-      {metrics.map((metric) => (
-        <MetricCard
-        key={metric.id}
-        label={metric.label}
-        value={metric.value}
-        unit={metric.unit}
-        />
-      ))}
+        return (
+          <div key={s.id}>
+            { /* for every metric we receive, map it onto a MetricCard */}
+            <MetricCard
+              label={s.label}
+              value={latest?.value ?? 0}
+              unit="%"
+            />
+
+            <MetricChart series={s} />
+          </div>
+        );
+      })}
     </main>
   );
 }
