@@ -2,16 +2,18 @@
 type MetricCardProps = {
     label: string,
     value: number,
-    unit: string
+    unit: string,
 }
 
-export function MetricCard({ label, value, unit }:  MetricCardProps) {
-    return (
-        <div style={{ border: "1px solid #ccc", padding: "1rem"}}>
-            <h3>{label}</h3>
-            <strong>
-                {value} {unit}
-            </strong>
-        </div>
-    );
+export function MetricCard({ label, value, unit }: MetricCardProps) {
+  return (
+    <div className="metric-card">
+      <div className="metric-label">{label}</div>
+
+      <div className="metric-value">
+        {value.toFixed(1)}
+        <span className="metric-unit">{unit}</span>
+      </div>
+    </div>
+  );
 }

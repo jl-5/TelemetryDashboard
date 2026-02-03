@@ -27,6 +27,7 @@ export function useMetrics() {
                     id: m.id,
                     label: m.label,
                     points: [],
+                    unit: m.unit,
                 };
                 }
 

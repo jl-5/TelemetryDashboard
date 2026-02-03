@@ -16,6 +16,12 @@ let metrics: Metric[] = [
         value: 74,
         unit: "%"
     },
+    {
+        id: "temperature",
+        label: "Temperature",
+        value: 69,
+        unit: "°C"
+    },
 
 ]
 

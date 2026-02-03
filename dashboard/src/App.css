@@ -1,42 +1,116 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+/* ---------- GLOBAL ---------- */
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: #f5f7fa;
+}
+
+/* ---------- DASHBOARD ---------- */
+
+.dashboard {
+  padding: 32px;
+  min-height: 100vh;
+  margin: 0 auto; 
+  align-items: center;
+}
+
+.dashboard-title {
+  margin-bottom: 32px;
+  font-size: 28px;
+  font-weight: 600;
+  color: rgb(0, 0, 0);
+}
+
+.dashboard-title,
+.section-title {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+/* ---------- SECTION TITLES ---------- */
+
+.section-title {
+  margin: 24px 0 16px;
+  font-size: 18px;
+  font-weight: 600;
+  color: #444;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+/* ---------- LOADING ---------- */
+
+.loading {
+  padding: 40px;
+  font-size: 20px;
+  text-align: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+/* ---------- CARD GRID ---------- */
+
+.cards {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 16px;
+  margin-bottom: 32px;
 }
 
-.card {
-  padding: 2em;
+/* ---------- METRIC CARD ---------- */
+
+.metric-card {
+  background: white;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.read-the-docs {
+.metric-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+}
+
+.metric-label {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 6px;
+}
+
+.metric-value {
+  font-size: 32px;
+  font-weight: 600;
+  color: #222;
+}
+
+.metric-unit {
+  margin-left: 6px;
+  font-size: 16px;
   color: #888;
+}
+
+/* ---------- CHART GRID ---------- */
+
+.charts {
+  display: flex;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  flex-wrap: wrap;  
+  gap: 24px;
+}
+
+/* ---------- CHART PANEL ---------- */
+
+.chart-panel {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  width: 520px;
+}
+
+/* ---------- CHART CONTAINER ---------- */
+
+.chart-container {
+  width: 100%;
+  height: 280px;
 }

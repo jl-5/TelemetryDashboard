@@ -9,28 +9,40 @@ import { MetricChart } from './components/MetricChart'
 function App() {
   const { series } = useMetrics();
 
+  const metricList = Object.values(series).map((s) => ({
+    id: s.id,
+    label: s.label,
+    unit: s.unit,
+    latest: s.points[s.points.length - 1],
+  }));
+
   return (
-    <main style={{ padding: "2rem" }}>
-      <h1>Metrics Dashboard</h1>
-      <p>Status: Running</p>
+    <main className="dashboard">
+      <div className='dashboard-content'></div>
+      <h1 className="dashboard-title">Metrics Dashboard</h1>
 
-      { /* render the charts and cards */}
-      {Object.values(series).map((s) => {
-        const latest = s.points[s.points.length - 1];
+      {/* SUMMARY CARDS */}
+      <h2 className="section-title">Summary</h2>
+      <section className="cards">
+        {metricList.map((m) => (
+          <MetricCard
+            key={m.id}
+            label={m.label}
+            value={m.latest?.value ?? 0}
+            unit={m.unit}
+          />
+        ))}
+      </section>
 
-        return (
-          <div key={s.id}>
-            { /* for every metric we receive, map it onto a MetricCard */}
-            <MetricCard
-              label={s.label}
-              value={latest?.value ?? 0}
-              unit="%"
-            />
-
+      {/* CHARTS */}
+      <h2 className="section-title">Trends</h2>
+      <section className="charts">
+        {Object.values(series).map((s) => (
+          <div key={s.id} className="chart-panel">
             <MetricChart series={s} />
           </div>
-        );
-      })}
+        ))}
+      </section>
     </main>
   );
 }

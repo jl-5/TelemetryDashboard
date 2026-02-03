@@ -3,49 +3,56 @@ import * as echarts from "echarts";
 import type { MetricSeries } from "../types/metric";
 
 type Props = {
-  series: MetricSeries;
+    series: MetricSeries;
 };
 
 export function MetricChart({ series }: Props) {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const chartRef = useRef<echarts.ECharts | null>(null);
+    const containerRef = useRef<HTMLDivElement>(null);
+    const chartRef = useRef<echarts.ECharts | null>(null);
 
-  useEffect(() => {
-    if (!containerRef.current) return;
+    useEffect(() => {
+        if (!containerRef.current) return;
 
-    chartRef.current = echarts.init(containerRef.current);
+        chartRef.current = echarts.init(containerRef.current);
 
-    return () => {
-      chartRef.current?.dispose();
-    };
-  }, []);
+        const handleResize = () => {
+            chartRef.current?.resize();
+        };
 
-  useEffect(() => {
-    if (!chartRef.current) return;
+        window.addEventListener("resize", handleResize);
 
-    chartRef.current.setOption({
-      title: {
-        text: series.label,
-      },
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            chartRef.current?.dispose();
+        };
+    }, []);
 
-      xAxis: {
-        type: "time",
-      },
+    useEffect(() => {
+        if (!chartRef.current) return;
 
-      yAxis: {
-        type: "value",
-      },
+        chartRef.current.setOption({
+            title: {
+                text: series.label,
+            },
 
-      series: [
-        {
-          type: "line",
-          smooth: true,
-          showSymbol: false,
-          data: series.points.map((p) => [p.timestamp, p.value]),
-        },
-      ],
-    });
-  }, [series]);
+            xAxis: {
+                type: "time",
+            },
 
-  return <div ref={containerRef} style={{ width: "600px", height: "250px" }} />;
+            yAxis: {
+                type: "value",
+            },
+
+            series: [
+                {
+                    type: "line",
+                    smooth: true,
+                    showSymbol: false,
+                    data: series.points.map((p) => [p.timestamp, p.value]),
+                },
+            ],
+        });
+    }, [series]);
+
+    return <div ref={containerRef} className="chart-container" />;
 }
