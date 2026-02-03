@@ -1,6 +1,6 @@
 # TelemetryDashboard
 
-A real-time metrics dashboard built with React, TypeScript, and Apache ECharts. This project simulates production telemetry systems and demonstrates realistic frontend architecture, time-series visualization, and production-style deployment using Docker and Nginx.
+A real-time telemetry metrics dashboard built with React, TypeScript, and Apache ECharts. This project simulates production telemetry systems and demonstrates realistic frontend architecture, time-series visualization, and production-style deployment using Docker and Nginx.
 
 ---
 
