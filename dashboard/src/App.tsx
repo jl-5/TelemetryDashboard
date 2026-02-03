@@ -4,6 +4,7 @@ import viteLogo from '/vite.svg'
 import './App.css'
 import { MetricCard } from './components/MetricCard'
 import { useMetrics } from './hooks/useMetrics'
+import { MetricChart } from './components/MetricChart'
 
 function App() {
   const { metrics } = useMetrics();

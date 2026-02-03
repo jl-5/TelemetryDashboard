@@ -51,7 +51,7 @@ export function useMetrics() {
         return () => clearInterval(intervalId);
     }, []);
 
-    return { metrics }
+    return { series }
 
     
 }
